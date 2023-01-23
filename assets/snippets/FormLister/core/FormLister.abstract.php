@@ -1131,9 +1131,9 @@ abstract class Core
             'messagesSplitter'
         );        
         if(strpos( $wrapper, '@') !== 0) {
-            $wrapper_chunk = $this->DLTemplate->getChunk($wrapper);
+            $wrapper = $this->DLTemplate->getChunk($wrapper);
         }
-        $renderErrors = strpos($wrapper_chunk, '[+errors+]') !== false || strpos($wrapper_chunk, '[+required+]') !== false;
+        $renderErrors = strpos($wrapper, '[+errors+]') !== false || strpos($wrapper, '[+required+]') !== false;
         if ($renderErrors) {
             $formErrors = array_filter($this->getFormData('errors'));
             $requiredMessages = $errorMessages = [];
