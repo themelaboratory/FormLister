@@ -1129,11 +1129,12 @@ abstract class Core
             $formMessages,
             'messagesOuterTpl',
             'messagesSplitter'
-        );        
+        );
+        $wrapper_chunk = $wrapper;
         if(strpos( $wrapper, '@') !== 0) {
-            $wrapper = $this->DLTemplate->getChunk($wrapper);
-        }
-        $renderErrors = strpos($wrapper, '[+errors+]') !== false || strpos($wrapper, '[+required+]') !== false;
+            $wrapper_chunk = $this->DLTemplate->getChunk($wrapper);
+        }        
+        $renderErrors = strpos($wrapper_chunk, '[+errors+]') !== false || strpos($wrapper_chunk, '[+required+]') !== false;
         if ($renderErrors) {
             $formErrors = array_filter($this->getFormData('errors'));
             $requiredMessages = $errorMessages = [];
